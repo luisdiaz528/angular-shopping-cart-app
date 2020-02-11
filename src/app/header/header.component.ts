@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+import { AddNewDvdComponent } from './add-new-dvd/add-new-dvd.component';
+
 
 @Component({
   selector: 'app-header',
@@ -17,9 +19,9 @@ export class HeaderComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     
     dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true
-    dialogConfig.width = '50%';
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '30%';
 
-    
+    this.dialog.open(AddNewDvdComponent, dialogConfig);
   }
 }

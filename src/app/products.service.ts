@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Products } from "./model/products";
+import { Products } from './model/products';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { NotifierService } from "angular-notifier";
-
-
+import { NotifierService } from 'angular-notifier';
 
 
 @Injectable({
@@ -47,10 +45,10 @@ export class ProductsService {
       (amount = [ ...newTemp, product]),
          localStorage.setItem('cart', JSON.stringify(amount));
     } else {
-      localStorage.setItem('cart', JSON.stringify(amount))
+      localStorage.setItem('cart', JSON.stringify(amount));
     }
 
-    this.notifierService.notify('Success!', "The Item was added to the cart!");
+    this.notifierService.notify('Success!', 'The Item was added to the cart!');
 
   }
 

@@ -7,7 +7,5 @@ export class Products {
         public price?: number,
         public title?: string,
         public quantity?: number
-    ) {
-        
-    }
+    ) { }
 }

@@ -1,9 +1,9 @@
-<mat-toolbar color="accent" class="navbar">
+<mat-toolbar color="warn" class="navbar">
     <mat-toolbar-row>
       <span>DVD Collection</span>
       <span class="example-spacer"></span>
       <a mat-button [routerLink]="[ '/home' ]">HOME</a>
-      <!-- <a mat-button (click)="openDialog()">ADD</a> -->
+      <a mat-button (click)="openDialog()">ADD</a>
       <a mat-button [routerLink]="[ '/cart' ]"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">shopping_cart</mat-icon></a>
     </mat-toolbar-row>
   </mat-toolbar>

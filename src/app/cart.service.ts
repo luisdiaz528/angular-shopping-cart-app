@@ -39,12 +39,12 @@ export class CartService {
 
   }
 
-  // Get the total of the pricesß
+  // Get the total of the prices
 
   getGranTotal(products: any[]) {
     let total = null;
     products.forEach((item) => {
-      if(item.newPrice) {
+      if (item.newPrice) {
         total += item.newPrice;
       } else {
         total += item.price;

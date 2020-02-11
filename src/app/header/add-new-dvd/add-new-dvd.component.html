@@ -1,0 +1,42 @@
+<div>
+    <h1 mat-dialog-title>Add New DVD To Collection</h1>
+</div>
+<div mat-dialog-content>
+    <form [formGroup]="form" class="form-container" novalidate>
+        <mat-form-field>
+            <input type="text" matInput formControlName="title" placeholder="Please Enter Title" name="form.get('title')">
+            <mat-error *ngIf="form.get('title').hasError('required')">
+                The title is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput formControlName="description" placeholder="Please Enter Description" name="form.get('description')">
+            <mat-error *ngIf="form.get('description').hasError('required')">
+                A description is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput formControlName="genre" placeholder="Please Enter Genre" name="form.get('genre')">
+            <mat-error *ngIf="form.get('genre').hasError('required')">
+                The genre is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput formControlName="price" placeholder="Please Enter Price" name="form.get('price')">
+            <mat-error *ngIf="form.get('price').hasError('required')">
+                The price is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput formControlName="qty" placeholder="Please Enter Quantity" name="form.get('qty')">
+            <mat-error *ngIf="form.get('qty').hasError('required')">
+                The quantity is required
+            </mat-error>
+        </mat-form-field>
+    </form>
+
+    <div mat-dialog-actions style="padding-top: 1rem; padding-bottom: 1rem;">
+        <button [disabled]="form.invalid" mat-raised-button (click)="submit()" color="primary">Create</button>
+        <button mat-raised-button (click)="onNoClick()" color="warn">Cancel</button>
+</div>
+</div>

@@ -12,6 +12,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   justify-content: space-between;
 }
 
+.search {
+  margin-left: 21%;
+}
+
 
 .card {
   width: 25%;

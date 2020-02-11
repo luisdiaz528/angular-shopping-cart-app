@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
   public hasResult: boolean;
   public newQty: number;
 
-  constructor(private cartServ: CartService) { }
+  constructor(private cartServ: CartService, private notifierService: NotifierService) { }
 
   ngOnInit() {
     this.products = this.cartServ.getCartItem();
@@ -24,6 +25,8 @@ export class CartComponent implements OnInit {
   removeItem(id: any) {
     this.products = this.cartServ.removeItem(id);
     this.granTotal = this.cartServ.getGranTotal(this.products);
+    this.notifierService.notify('error', 'The item has been removed from your cart!');
+
   }
 
   updateQtyNumber(value: any, product: any) {

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Products } from '../model/products';
+import { CartService } from '../cart.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  public productSubcription : Subscription;
+  public productSubcription: Subscription;
   public routerSubscribe: Subscription;
   public id: string;
   public product: any[] = [];
@@ -17,8 +20,9 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
-    private activeRouter: ActivatedRoute
-    ) { }
+    private activeRouter: ActivatedRoute,
+    private cartServ: CartService,
+    private notifierService: NotifierService) { }
 
   ngOnInit() {
 
@@ -32,28 +36,29 @@ export class ProductsComponent implements OnInit {
       this.product = data.filter(p => (p.id === this.id));
     });
 
-
-    // this.qty = 1;
-    // this.item = this.productService.getProducts();
   }
 
   // add item to cart
+  addItemToCart(product: Products) {
+    if (this.qty <= 0) {
+      return;
+    } else {
+      const newObject: any = {
+        id: product.id,
+        title: product.title,
+        gerne: product.genre,
+        description: product.description,
+      };
+      newObject.price = (this.qty === 0) ? product.price : Number(product.price) * this.qty;
+      newObject.qty = (this.qty === 0) ? 1 : this.qty;
 
-  setItem(product: any) {
-    const newItem: any = {
-      id: product.id,
-      title: product.title,
-      genre: product.genre,
-      description: product.description,
-      price: product.price * this.qty,
-      qty: this.qty
-    };
+      if (this.qty === 0) {
+        this.qty = 1;
+      }
 
-    this.productService.addProductToCart(newItem);
+      this.cartServ.addItemTocart(newObject);
+      this.notifierService.notify('success', 'The item was successfully added to your cart!');
+    }
 
   }
-
-  
-  
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Products } from '../model/products';
 import { Subscription } from 'rxjs';
 import { ProductsComponent } from '../products/products.component';
@@ -9,7 +9,7 @@ import { ProductsService } from '../products.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
 
   public products: Products[] = [];
   public queryFiltered: Products[] = [];

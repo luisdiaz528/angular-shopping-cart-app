@@ -32,40 +32,7 @@
         </p>
         </mat-card-content>
         <mat-card-actions>
-        <a mat-flat-button color='accent' [routerLink]="['/product', item[0].id]" >DETAILS</a>
-        <!-- <button mat-flat-button color="primary" (click)="setItem(product[0])"></button> -->
-        <button mat-flat-button color='accent' (click)="addItemToCart(item[0])">ADD</button>
+        <a mat-flat-button color='primary' [routerLink]="['/product', item[0].id]" >Details</a>
+        <button mat-flat-button color='accent' (click)="addItemToCart(item[0])">Add</button>
         </mat-card-actions>
     </mat-card>
-
-
-<!--   
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 product-card">
-            <div class="card" style="width: 18rem;" >
-            <img class="card-img-top" src="http://dummyimage.com/300" alt="">
-            <div class="card-body">
-                <h5 class="card-title">{{ item[0].title }}</h5>
-                <p class="card-text">{{ item[0].description }}</p>
-                <p *ngIf="qty != 0"><b>Price:</b> ${{ item[0].price * item[0].quantity }}</p>
-                <p *ngIf="qty == 0"><b>Price:</b> ${{ item[0].price }}</p>
-                <p class="card-text">{{ item[0].quantity }}</p>
-
-                <mat-form-field class="example-full-width">
-                    <input
-                        matInput
-                        placeholder="QTY"
-                        type="number"
-                        min="1"
-                        [(ngModel)]="qty"
-                        name="qty"
-                        value="1"/>
-                </mat-form-field>
-
-                <button class="btn btn-outline-primary" >Add To Cart</button>
-            </div>
-            </div>
-        </div>
-    </div>
-</div> -->
