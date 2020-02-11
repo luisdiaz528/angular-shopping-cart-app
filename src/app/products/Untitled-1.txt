@@ -1,0 +1,30 @@
+
+<div class="container-fluid" *ngIf="product | async as data ">
+    <div class="row">
+        <div class="col-xs-12 product-card" *ngFor="let product of data">
+            <div class="card" style="width: 18rem;" >
+            <img class="card-img-top" src="http://dummyimage.com/300" alt="">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <p *ngIf="quantity != 0"><b>Price:</b> ${{ product.price * product.quantity }}</p>
+                <p *ngIf="quantity == 0"><b>Price:</b> ${{ product.price }}</p>
+                <p class="card-text">{{ product.quantity }}</p>
+
+                <mat-form-field class="example-full-width">
+                    <input
+                        matInput
+                        placeholder="QTY"
+                        type="number"
+                        min="1"
+                        [(ngModel)]="quantity"
+                        name="qty"
+                        value="1"/>
+                </mat-form-field>
+
+            <button class="btn btn-outline-primary" >Add To Cart</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

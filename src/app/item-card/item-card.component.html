@@ -1,0 +1,71 @@
+
+    <mat-card class="example-card">
+        <mat-card-header>
+        <mat-card-title>{{ item[0].title }}</mat-card-title>
+        </mat-card-header>
+        <img
+        mat-card-image
+        src="https://dummyimage.com/200"
+        alt="Photo of a Shiba Inu"
+        />
+        <mat-card-content>
+        <p>
+            <b>Genre:</b> {{ item[0].genre }}
+        </p>
+        <p>
+        {{ item[0].description }}
+        </p>
+        <p *ngIf="qty != 0"><b>Price:</b> ${{ item[0].price * qty }}</p>
+        <p *ngIf="qty == 0"><b>Price:</b> ${{ item[0].price}}</p>
+        <p>
+            <mat-form-field class="example-full-width">
+            <input
+                matInput
+                placeholder="QTY"
+                type="number"
+                min="1"
+                name="qty"
+                value="1"
+                [(ngModel)]="qty"
+            />
+            </mat-form-field>
+        </p>
+        </mat-card-content>
+        <mat-card-actions>
+        <a mat-flat-button color='accent' [routerLink]="['/product', item[0].id]" >DETAILS</a>
+        <!-- <button mat-flat-button color="primary" (click)="setItem(product[0])"></button> -->
+        <button mat-flat-button color='accent' (click)="addItemToCart(item[0])">ADD</button>
+        </mat-card-actions>
+    </mat-card>
+
+
+<!--   
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 product-card">
+            <div class="card" style="width: 18rem;" >
+            <img class="card-img-top" src="http://dummyimage.com/300" alt="">
+            <div class="card-body">
+                <h5 class="card-title">{{ item[0].title }}</h5>
+                <p class="card-text">{{ item[0].description }}</p>
+                <p *ngIf="qty != 0"><b>Price:</b> ${{ item[0].price * item[0].quantity }}</p>
+                <p *ngIf="qty == 0"><b>Price:</b> ${{ item[0].price }}</p>
+                <p class="card-text">{{ item[0].quantity }}</p>
+
+                <mat-form-field class="example-full-width">
+                    <input
+                        matInput
+                        placeholder="QTY"
+                        type="number"
+                        min="1"
+                        [(ngModel)]="qty"
+                        name="qty"
+                        value="1"/>
+                </mat-form-field>
+
+                <button class="btn btn-outline-primary" >Add To Cart</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div> -->
